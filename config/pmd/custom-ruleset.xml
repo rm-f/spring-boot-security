@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Rules"
+  xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+  <description>
+    daekyo development team
+  </description>
+
+  <exclude-pattern>.*/generated/.*</exclude-pattern>
+  <exclude-pattern>.*/controller/openapi/.*</exclude-pattern>
+  <exclude-pattern>.*/common/base/.*</exclude-pattern>
+
+  <rule ref="category/java/bestpractices.xml">
+    <exclude name="GuardLogStatement"/>
+  </rule>
+  <rule ref="category/java/bestpractices.xml/UnusedPrivateMethod">
+    <properties>
+      <property name="ignoredAnnotations"
+        value="com.daekyo.ds.api.common.annotation.IgnoreUnusedPrivateMethod"/>
+    </properties>
+  </rule>
+
+
+  <rule ref="category/java/codestyle.xml">
+    <exclude name="MethodArgumentCouldBeFinal"/>
+    <exclude name="LocalVariableCouldBeFinal"/>
+    <exclude name="OnlyOneReturn"/>
+    <exclude name="ConfusingTernary"/>
+    <exclude name="AtLeastOneConstructor"/>
+    <exclude name="AvoidFinalLocalVariable"/>
+    <exclude name="ShortVariable"/>
+    <exclude name="LongVariable"/>
+    <exclude name="CommentDefaultAccessModifier"/>
+    <exclude name="DefaultPackage"/> <!-- deprecated -->
+    <exclude name="PrematureDeclaration"/>
+  </rule>
+  <rule ref="category/java/codestyle.xml/ShortMethodName">
+    <properties>
+      <property name="minimum" value="2"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/codestyle.xml/ClassNamingConventions">
+    <properties>
+      <property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+"/>
+    </properties>
+  </rule>
+
+  <rule ref="category/java/design.xml">
+    <exclude name="LawOfDemeter"/>
+    <exclude name="NcssCount"/>
+    <exclude name="CyclomaticComplexity"/>
+    <exclude name="UseUtilityClass"/>
+    <exclude name="AvoidCatchingGenericException"/>
+    <exclude name="NPathComplexity"/>
+    <exclude name="AvoidRethrowingException"/>
+    <exclude name="AvoidThrowingRawExceptionTypes"/>
+    <exclude name="SignatureDeclareThrowsException"/>
+    <exclude name="ExcessiveImports"/>
+    <exclude name="LoosePackageCoupling"/>
+    <exclude name="CognitiveComplexity"/>
+    <exclude name="GodClass"/>
+  </rule>
+  <rule ref="category/java/design.xml/ExcessiveParameterList">
+    <properties>
+      <property name="minimum" value="20.0"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts">
+    <properties>
+      <property name="problemDepth" value="4"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/TooManyFields">
+    <properties>
+      <property name="maxfields" value="100"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/TooManyMethods">
+    <properties>
+      <property name="maxmethods" value="50"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/ExcessiveMethodLength">
+    <properties>
+      <property name="minimum" value="500.0"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/ExcessiveClassLength">
+    <properties>
+      <property name="minimum" value="3000.0"/>
+    </properties>
+  </rule>
+
+  <rule ref="category/java/documentation.xml">
+    <exclude name="CommentRequired"/>
+    <exclude name="UncommentedEmptyConstructor"/>
+    <exclude name="CommentSize"/>
+  </rule>
+
+  <rule ref="category/java/errorprone.xml">
+    <exclude name="BeanMembersShouldSerialize"/>
+    <exclude name="DataflowAnomalyAnalysis"/> <!-- deprecated -->
+    <exclude name="AssignmentInOperand"/>
+    <exclude name="EmptyCatchBlock"/>
+  </rule>
+  <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
+    <properties>
+      <property name="ignoreMagicNumbers"
+        value="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24"/>
+      <property name="ignoreExpressions" value="true"/>
+    </properties>
+  </rule>
+
+  <rule ref="category/java/multithreading.xml">
+    <exclude name="UseConcurrentHashMap"/>
+  </rule>
+
+  <rule ref="category/java/performance.xml">
+    <exclude name="AvoidInstantiatingObjectsInLoops"/>
+    <exclude name="AppendCharacterWithChar"/>
+  </rule>
+
+  <rule ref="category/java/security.xml">
+  </rule>
+
+  <!--  <rule ref="category/java/bestpractices.xml/ConstantsInInterface">-->
+  <!--    <properties>-->
+  <!--      <property name="ignoreIfHasMethods" value="true" />-->
+  <!--    </properties>-->
+  <!--  </rule>-->
+
+</ruleset>

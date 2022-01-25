@@ -1,0 +1,30 @@
+server:
+  port: 8080
+spring:
+  config:
+    activate:
+      on-profile: local
+---
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+    hikari:
+      connectionTimeout: 30000
+      maximumPoolSize: 5
+      maxLifetime: 1800000
+      poolName: HikariCP
+      readOnly: false
+      connectionTestQuery: SELECT 1
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: true
+  security:
+    user:
+      name: user
+      password: 1234
+

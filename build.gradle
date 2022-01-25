@@ -1,0 +1,81 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'checkstyle'
+    id 'pmd'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+jar {
+    enabled(false)
+}
+
+bootJar {
+    archiveBaseName.set('app')
+    archiveFileName.set(bootJar.getArchiveBaseName().get().concat('.jar'))
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'ch.qos.logback:logback-classic:1.2.10'
+
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    runtimeOnly 'com.h2database:h2:2.1.210'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+}
+
+test {
+    useJUnitPlatform()
+}
+checkstyle {
+    ignoreFailures = false
+    maxWarnings = 0
+    configFile = file("${rootDir}/config/checkstyle/google-checkstyle.xml")
+    configProperties = ["suppressionFile": project(':').file('config/checkstyle/checkstyle-suppressions.xml')]
+    reportsDir = file("${buildDir}/checkstyle-output")
+    toolVersion = '8.45'
+}
+
+checkstyleMain {
+    reports {
+        xml.destination(file("${checkstyle.reportsDir}/checkstyle-report.xml"))
+    }
+}
+
+pmd {
+    ignoreFailures = false
+    toolVersion = '6.37.0'
+    ruleSets = []
+    consoleOutput = true
+    ruleSetFiles = files("${rootDir}/config/pmd/custom-ruleset.xml")
+    reportsDir = file("${buildDir}/pmd-output")
+}
+
+pmdMain {
+    reports {
+        xml.destination(file("${pmd.reportsDir}/pmd-report.xml"))
+        xml.enabled(true)
+    }
+}

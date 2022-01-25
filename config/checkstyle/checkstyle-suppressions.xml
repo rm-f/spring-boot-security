@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+  "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+  "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<!-- IMPORTANT ECLIPSE NOTE: If you change this file, you must restart Eclipse
+ for your changes to take effect in its Checkstyle integration. -->
+<suppressions>
+  <suppress files="[\\/]generated[\\/]" checks="."/>
+  <suppress files="[\\/]com[\\/]daekyo[\\/]ds[\\/]api[\\/]domain[\\/]legacy[\\/]"
+    checks="MemberName"/>
+  <suppress files="[\\/]com[\\/]daekyo[\\/]ds[\\/]api[\\/]domain[\\/]legacy[\\/]"
+    checks="ParameterName"/>
+    <suppress files="[\\/]com[\\/]daekyo[\\/]ds[\\/]api[\\/]domain[\\/]learning[\\/]"
+    checks="MemberName"/>
+  <suppress files="[\\/]com[\\/]daekyo[\\/]ds[\\/]api[\\/]domain[\\/]learning[\\/]"
+    checks="ParameterName"/>
+</suppressions>
