@@ -7,12 +7,4 @@
  for your changes to take effect in its Checkstyle integration. -->
 <suppressions>
   <suppress files="[\\/]generated[\\/]" checks="."/>
-  <suppress files="[\\/]com[\\/]daekyo[\\/]ds[\\/]api[\\/]domain[\\/]legacy[\\/]"
-    checks="MemberName"/>
-  <suppress files="[\\/]com[\\/]daekyo[\\/]ds[\\/]api[\\/]domain[\\/]legacy[\\/]"
-    checks="ParameterName"/>
-    <suppress files="[\\/]com[\\/]daekyo[\\/]ds[\\/]api[\\/]domain[\\/]learning[\\/]"
-    checks="MemberName"/>
-  <suppress files="[\\/]com[\\/]daekyo[\\/]ds[\\/]api[\\/]domain[\\/]learning[\\/]"
-    checks="ParameterName"/>
 </suppressions>

@@ -23,9 +23,9 @@
         <logger name="org.springframework" level="info" additivity="fasle">
             <appender-ref ref="console"/>
         </logger>
-<!--        <logger name="org.hibernate" level="info" additivity="fasle">-->
-<!--            <appender-ref ref="console"/>-->
-<!--        </logger>-->
+        <logger name="org.hibernate" level="info" additivity="fasle">
+            <appender-ref ref="console"/>
+        </logger>
 <!--       -->
         <logger name="com.zaxxer.hikari" level="info" additivity="false">
             <appender-ref ref="console"/>

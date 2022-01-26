@@ -6,17 +6,14 @@
 <!--
     Checkstyle configuration that checks the Google coding conventions from Google Java Style
     that can be found at https://google.github.io/styleguide/javaguide.html
-
     Checkstyle is very configurable. Be sure to read the documentation at
     http://checkstyle.org (or in your downloaded distribution).
-
     To completely disable a check, just comment it out or delete it from the file.
     To suppress certain violations please review suppression filters.
-
     Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
- -->
+-->
 
-<module name="Checker">
+<module name = "Checker">
   <property name="charset" value="UTF-8"/>
 
   <property name="severity" value="warning"/>
@@ -29,8 +26,8 @@
   </module>
   <!-- https://checkstyle.org/config_filters.html#SuppressionFilter -->
   <module name="SuppressionFilter">
-    <property name="file" value="${suppressionFile}"
-      default="checkstyle-suppressions.xml"/>
+    <property name="file" value="${org.checkstyle.google.suppressionfilter.config}"
+      default="checkstyle-suppressions.xml" />
     <property name="optional" value="true"/>
   </module>
 
@@ -43,8 +40,7 @@
   <module name="LineLength">
     <property name="fileExtensions" value="java"/>
     <property name="max" value="100"/>
-    <property name="ignorePattern"
-      value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
+    <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
   </module>
 
   <module name="TreeWalker">
@@ -181,7 +177,7 @@
         value="Type name ''{0}'' must match pattern ''{1}''."/>
     </module>
     <module name="MemberName">
-      <property name="format" value="^[a-z0-9][a-zA-Z0-9]*$"/>
+      <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9]*$"/>
       <message key="name.invalidPattern"
         value="Member name ''{0}'' must match pattern ''{1}''."/>
     </module>
@@ -250,8 +246,8 @@
       <property name="basicOffset" value="2"/>
       <property name="braceAdjustment" value="2"/>
       <property name="caseIndent" value="2"/>
-      <property name="throwsIndent" value="4"/>
-      <property name="lineWrappingIndentation" value="4"/>
+      <property name="throwsIndent" value="2"/>
+      <property name="lineWrappingIndentation" value="2"/>
       <property name="arrayInitIndent" value="2"/>
     </module>
     <module name="AbbreviationAsWordInName">
@@ -264,11 +260,9 @@
     </module>
     <module name="NoWhitespaceBeforeCaseDefaultColon"/>
     <module name="OverloadMethodsDeclarationOrder"/>
-    <module name="VariableDeclarationUsageDistance">
-      <property name="allowedDistance" value="10"/>
-    </module>
+    <module name="VariableDeclarationUsageDistance"/>
     <module name="CustomImportOrder">
-      <property name="sortImportsInGroupAlphabetically" value="true"/>
+      <property name="sortImportsInGroupAlphabetically" value="false"/>
       <property name="separateLineBetweenGroups" value="true"/>
       <property name="customImportOrderRules" value="STATIC###THIRD_PARTY_PACKAGE"/>
       <property name="tokens" value="IMPORT, STATIC_IMPORT, PACKAGE_DEF"/>
@@ -313,41 +307,40 @@
     <module name="NonEmptyAtclauseDescription"/>
     <module name="InvalidJavadocPosition"/>
     <module name="JavadocTagContinuationIndentation"/>
-    <!--    <module name="SummaryJavadoc">-->
-    <!--      <property name="forbiddenSummaryFragments"-->
-    <!--        value="^@return the *|^This method returns |^A [{]@code [a-zA-Z0-9]+[}]( is a )"/>-->
-    <!--    </module>-->
-    <module name="JavadocParagraph"/>
-    <module name="RequireEmptyLineBeforeBlockTagGroup"/>
-    <module name="AtclauseOrder">
-      <property name="tagOrder" value="@param, @return, @throws, @deprecated"/>
-      <property name="target"
-        value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF, VARIABLE_DEF"/>
+    <module name="SummaryJavadoc">
+      <property name="forbiddenSummaryFragments"
+        value="^@return the *|^This method returns |^A [{]@code [a-zA-Z0-9]+[}]( is a )"/>
     </module>
-    <module name="JavadocMethod">
-      <property name="accessModifiers" value="public"/>
-      <property name="allowMissingParamTags" value="true"/>
-      <property name="allowMissingReturnTag" value="true"/>
-      <property name="allowedAnnotations" value="Override, Test"/>
-      <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF, COMPACT_CTOR_DEF"/>
-    </module>
-    <!--<module name="MissingJavadocMethod">
-      <property name="scope" value="public"/>
-      <property name="minLineCount" value="2"/>
-      <property name="allowedAnnotations" value="Override, Test"/>
-      <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF,
-                                   COMPACT_CTOR_DEF"/>
-    </module>-->
-    <!--
-    <module name="MissingJavadocType">
-      <property name="scope" value="protected"/>
-      <property name="tokens"
-        value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF,
-                      RECORD_DEF, ANNOTATION_DEF"/>
-      <property name="excludeScope" value="nothing"/>
-    </module>-->
+<!--    <module name="JavadocParagraph"/>-->
+<!--    <module name="RequireEmptyLineBeforeBlockTagGroup"/>-->
+<!--    <module name="AtclauseOrder">-->
+<!--      <property name="tagOrder" value="@param, @return, @throws, @deprecated"/>-->
+<!--      <property name="target"-->
+<!--        value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF, VARIABLE_DEF"/>-->
+<!--    </module>-->
+<!--    <module name="JavadocMethod">-->
+<!--      <property name="accessModifiers" value="public"/>-->
+<!--      <property name="allowMissingParamTags" value="true"/>-->
+<!--      <property name="allowMissingReturnTag" value="true"/>-->
+<!--      <property name="allowedAnnotations" value="Override, Test"/>-->
+<!--      <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF, COMPACT_CTOR_DEF"/>-->
+<!--    </module>-->
+<!--    <module name="MissingJavadocMethod">-->
+<!--      <property name="scope" value="public"/>-->
+<!--      <property name="minLineCount" value="2"/>-->
+<!--      <property name="allowedAnnotations" value="Override, Test"/>-->
+<!--      <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF,-->
+<!--                                   COMPACT_CTOR_DEF"/>-->
+<!--    </module>-->
+<!--    <module name="MissingJavadocType">-->
+<!--      <property name="scope" value="protected"/>-->
+<!--      <property name="tokens"-->
+<!--        value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF,-->
+<!--                      RECORD_DEF, ANNOTATION_DEF"/>-->
+<!--      <property name="excludeScope" value="nothing"/>-->
+<!--    </module>-->
     <module name="MethodName">
-      <property name="format" value="^[a-zㄱ-ㅎㅏ-ㅣ가-힣][a-z0-9ㄱ-ㅎㅏ-ㅣ가-힣][a-zA-Z0-9_ㄱ-ㅎㅏ-ㅣ가-힣]*$"/>
+      <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9_]*$"/>
       <message key="name.invalidPattern"
         value="Method name ''{0}'' must match pattern ''{1}''."/>
     </module>
@@ -361,7 +354,7 @@
     <!-- https://checkstyle.org/config_filters.html#SuppressionXpathFilter -->
     <module name="SuppressionXpathFilter">
       <property name="file" value="${org.checkstyle.google.suppressionxpathfilter.config}"
-        default="checkstyle-xpath-suppressions.xml"/>
+        default="checkstyle-xpath-suppressions.xml" />
       <property name="optional" value="true"/>
     </module>
   </module>
