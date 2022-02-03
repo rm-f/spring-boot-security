@@ -1,6 +1,7 @@
 package com.example.security.domain.user;
 
 import com.example.security.domain.user.entity.User;
+import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
@@ -8,8 +9,10 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
   List<User> findByName(final String name);
 
-  User findById(final String id);
+  Optional<User> findById(final String id);
 
-  User findByNo(final Long no);
+  Optional<User> findByNo(final Long no);
+
+  Optional<User> findByIdAndPassword(final String id, final String password);
 
 }

@@ -4,6 +4,10 @@ spring:
   config:
     activate:
       on-profile: local
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+    mode: HTML
 ---
 spring:
   profiles:
@@ -23,8 +27,14 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     open-in-view: true
+    show-sql: true
   security:
     user:
       name: user
       password: 1234
-
+  # jpa query, parameter 로그
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+      multiline: true

@@ -1,5 +1,6 @@
 package com.example.security.domain.user.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,8 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 @Entity
 @Getter
@@ -19,6 +22,7 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
 @Table(name = "users")
 public class User {
 
@@ -26,8 +30,14 @@ public class User {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long no;
 
+  @Column(nullable = false, unique = true)
   private String id;
+
+  @Column(nullable = false)
   private String name;
   private String password;
+  private boolean enabled;
+  @ColumnDefault("USER")
+  private String role;
 
 }

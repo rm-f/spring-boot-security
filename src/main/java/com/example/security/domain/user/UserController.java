@@ -17,6 +17,6 @@ class UserController {
   public String login(Model model) {
 
 
-    return "login";
+    return "user/login";
   }
 }
