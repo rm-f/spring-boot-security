@@ -1,7 +1,7 @@
 package com.example.security.domain.user;
 
-import com.example.security.domain.user.entity.User;
+import com.example.security.domain.user.entity.ServiceUser;
 
 public interface UserService {
-  User regist(final LoginUser loginUser);
+  ServiceUser regist(final LoginUser loginUser);
 }

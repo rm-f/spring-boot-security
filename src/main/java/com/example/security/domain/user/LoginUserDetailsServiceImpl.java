@@ -1,7 +1,7 @@
 package com.example.security.domain.user;
 
-import com.example.security.component.mapper.LoginUserMapper;
-import com.example.security.domain.user.entity.User;
+import com.example.security.domain.mapper.LoginUserMapper;
+import com.example.security.domain.user.entity.ServiceUser;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @RequiredArgsConstructor
-//@Service
+@Service
 public class LoginUserDetailsServiceImpl implements UserDetailsService {
 
   final UserRepository userRepository;
@@ -20,7 +20,7 @@ public class LoginUserDetailsServiceImpl implements UserDetailsService {
 
   @Override
   public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-    Optional<User> user = userRepository.findById(id);
+    Optional<ServiceUser> user = userRepository.findById(id);
     if (user.isEmpty()) {
       throw new UsernameNotFoundException("Could not find user");
     }

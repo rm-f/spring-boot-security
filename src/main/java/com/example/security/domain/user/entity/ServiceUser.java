@@ -24,7 +24,7 @@ import org.hibernate.annotations.DynamicInsert;
 @AllArgsConstructor
 @DynamicInsert
 @Table(name = "users")
-public class User {
+public class ServiceUser {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,7 +1,7 @@
 package com.example.security.domain.user;
 
-import com.example.security.component.mapper.LoginUserMapper;
-import com.example.security.domain.user.entity.User;
+import com.example.security.domain.mapper.LoginUserMapper;
+import com.example.security.domain.user.entity.ServiceUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,8 +15,7 @@ public class UserServiceImpl implements UserService {
   final LoginUserMapper loginUserMapper;
 
   @Override
-  public User regist(LoginUser loginUser) {
-    User regist = userRepository.save(loginUserMapper.toEntity(loginUser));
-    return regist;
+  public ServiceUser regist(LoginUser loginUser) {
+    return userRepository.save(loginUserMapper.toEntity(loginUser));
   }
 }
