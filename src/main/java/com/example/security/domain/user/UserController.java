@@ -14,9 +14,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 class UserController {
 
   @GetMapping("/login")
-  public String login(Model model) {
+  public String login(String error, String logout, Model model) {
 
+    if (error != null) {
+      model.addAttribute("error", "Login error!");
+    }
+
+    if(logout != null){
+      model.addAttribute("logout", "Logout!!");
+    }
 
     return "user/login";
+  }
+
+  @GetMapping("/login-error")
+  public String loginError(String error, String logout, Model model){
+    if (error != null) {
+      model.addAttribute("error", "Login error!");
+    }
+
+    if(logout != null){
+      model.addAttribute("logout", "Logout!!");
+    }
+    return "user/login-error";
   }
 }

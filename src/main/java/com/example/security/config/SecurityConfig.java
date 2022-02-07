@@ -32,14 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .anyRequest()
                     .authenticated())
-        .formLogin();
-    //        .formLogin(
-    //            (formLogin) ->
-    // formLogin.loginPage("/user/login").failureUrl("/user/login-error"));
+        .formLogin(
+            (formLogin) -> formLogin.loginPage("/user/login").failureUrl("/user/login-error"));
     http.csrf().disable();
     http.headers().frameOptions().disable();
   }
-
 
   @Bean
   @Override
