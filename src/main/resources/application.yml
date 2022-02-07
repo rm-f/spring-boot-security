@@ -8,6 +8,10 @@ spring:
     cache: false
     encoding: utf-8
     mode: HTML
+    suffix: .html
+    prefix: classpath:templates/
+    enabled: true
+#    enable-spring-el-compiler: true
 ---
 spring:
   profiles:
@@ -28,11 +32,10 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     open-in-view: true
     show-sql: true
-  security:
-    user:
-      name: user
-      password: 1234
   # jpa query, parameter 로그
+  h2:
+    console:
+      enabled: true
 decorator:
   datasource:
     p6spy:

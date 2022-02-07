@@ -39,6 +39,7 @@ dependencies {
     implementation 'org.assertj:assertj-core:3.22.0'
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.8'
     implementation "org.mapstruct:mapstruct:1.4.2.Final"
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'

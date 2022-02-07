@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @RequiredArgsConstructor
-@Service
+//@Service
 public class LoginUserDetailsServiceImpl implements UserDetailsService {
 
   final UserRepository userRepository;
