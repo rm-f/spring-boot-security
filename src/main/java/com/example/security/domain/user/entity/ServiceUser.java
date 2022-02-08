@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,20 +25,28 @@ import org.hibernate.annotations.DynamicInsert;
 @AllArgsConstructor
 @DynamicInsert
 @Table(name = "users")
+@SequenceGenerator(
+    name = "USERS_NO_GENERATOR",
+    sequenceName = "SQ_USERS_USERNO",
+    initialValue = 1,
+    allocationSize = 1
+)
 public class ServiceUser {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long no;
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERS_NO_GENERATOR")
+  private Long userNo;
 
   @Column(nullable = false, unique = true)
-  private String id;
+  private String userId;
 
   @Column(nullable = false)
-  private String name;
+  private String userName;
+  @Column(nullable = false)
+  private String email;
   private String password;
   private boolean enabled;
   @ColumnDefault("USER")
-  private String role;
+  private String userRole;
 
 }

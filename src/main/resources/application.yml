@@ -32,6 +32,8 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     open-in-view: true
     show-sql: true
+    hibernate:
+      ddl-auto: none
   # jpa query, parameter 로그
   h2:
     console:

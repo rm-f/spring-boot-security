@@ -21,7 +21,7 @@ public class LoginUser implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    SimpleGrantedAuthority authority = new SimpleGrantedAuthority(serviceUser.getRole());
+    SimpleGrantedAuthority authority = new SimpleGrantedAuthority(serviceUser.getUserRole());
     return Arrays.asList(authority);
   }
 
@@ -32,7 +32,7 @@ public class LoginUser implements UserDetails {
 
   @Override
   public String getUsername() {
-    return serviceUser.getId();
+    return serviceUser.getUserId();
   }
 
   @Override

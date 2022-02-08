@@ -15,8 +15,8 @@ import lombok.ToString;
 @ToString
 public class RegistForm {
 
-  private String id;
-  private String name;
+  private String userId;
+  private String userName;
   private String password;
   private String email;
 }

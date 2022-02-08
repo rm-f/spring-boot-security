@@ -17,18 +17,21 @@ class ServiceUserRepositoryTest {
   @Test
   void saveAndFindById() {
     ServiceUser serviceUser =
-        userRepository.save(ServiceUser.builder().id("test").password("test").name("개발자").build());
-    userRepository.save(ServiceUser.builder().id("test1").password("test1").name("개발자1").build());
-    userRepository.save(ServiceUser.builder().id("test2").password("test2").name("개발자2").build());
+        userRepository.save(
+            ServiceUser.builder().userId("test").password("test").userName("개발자").build());
+    userRepository.save(
+        ServiceUser.builder().userId("test1").password("test1").userName("개발자1").build());
+    userRepository.save(
+        ServiceUser.builder().userId("test2").password("test2").userName("개발자2").build());
     log.info("save : {}", serviceUser.toString());
-    Optional<ServiceUser> userResult = userRepository.findById(serviceUser.getId());
+    Optional<ServiceUser> userResult = userRepository.findByUserId(serviceUser.getUserId());
     log.info("findById : {} ", userResult.get().toString());
     log.info("count : {} ", userRepository.count());
 
     log.info(
         "IdAndPassword : {} ",
         userRepository
-            .findByIdAndPassword(serviceUser.getId(), serviceUser.getPassword())
+            .findByUserIdAndPassword(serviceUser.getUserId(), serviceUser.getPassword())
             .get()
             .toString());
 

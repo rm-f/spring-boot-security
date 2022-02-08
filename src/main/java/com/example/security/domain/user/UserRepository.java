@@ -7,12 +7,12 @@ import java.util.List;
 
 public interface UserRepository extends CrudRepository<ServiceUser, Long> {
 
-  List<ServiceUser> findByName(final String name);
+  List<ServiceUser> findByUserName(final String userName);
 
-  Optional<ServiceUser> findById(final String id);
+  Optional<ServiceUser> findByUserId(final String userId);
 
-  Optional<ServiceUser> findByNo(final Long no);
+  Optional<ServiceUser> findByUserNo(final Long userNo);
 
-  Optional<ServiceUser> findByIdAndPassword(final String id, final String password);
+  Optional<ServiceUser> findByUserIdAndPassword(final String userId, final String password);
 
 }

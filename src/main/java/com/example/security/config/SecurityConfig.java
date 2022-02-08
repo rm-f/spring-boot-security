@@ -28,12 +28,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 authorize
                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                     .permitAll()
-                    .antMatchers("/", "/index", "/user/**", "/h2-console/**")
+                    .antMatchers("/", "/v1/**", "/index", "/user/**", "/h2-console/**")
                     .permitAll()
                     .anyRequest()
                     .authenticated())
         .formLogin(
-            (formLogin) -> formLogin.loginPage("/user/login").failureUrl("/user/login-error"));
+            (formLogin) ->
+                formLogin
+                    .loginPage("/user/login")
+                    .failureUrl("/user/login-error")
+                    .loginProcessingUrl("/user/login-process")
+                    .usernameParameter("userid")
+                    .passwordParameter("password"));
     http.csrf().disable();
     http.headers().frameOptions().disable();
   }
