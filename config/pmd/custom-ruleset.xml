@@ -49,18 +49,19 @@
 
   <rule ref="category/java/design.xml">
     <exclude name="LawOfDemeter"/>
-    <exclude name="NcssCount"/>
-    <exclude name="CyclomaticComplexity"/>
+<!--    <exclude name="NcssCount"/>-->
+<!--    <exclude name="CyclomaticComplexity"/>-->
     <exclude name="UseUtilityClass"/>
-    <exclude name="AvoidCatchingGenericException"/>
-    <exclude name="NPathComplexity"/>
-    <exclude name="AvoidRethrowingException"/>
-    <exclude name="AvoidThrowingRawExceptionTypes"/>
-    <exclude name="SignatureDeclareThrowsException"/>
-    <exclude name="ExcessiveImports"/>
-    <exclude name="LoosePackageCoupling"/>
-    <exclude name="CognitiveComplexity"/>
-    <exclude name="GodClass"/>
+<!--    <exclude name="AvoidCatchingGenericException"/>-->
+<!--    <exclude name="NPathComplexity"/>-->
+<!--    <exclude name="AvoidRethrowingException"/>-->
+<!--    <exclude name="AvoidThrowingRawExceptionTypes"/>-->
+<!--    <exclude name="SignatureDeclareThrowsException"/>-->
+<!--    <exclude name="ExcessiveImports"/>-->
+<!--    <exclude name="LoosePackageCoupling"/>-->
+<!--    <exclude name="CognitiveComplexity"/>-->
+<!--    <exclude name="GodClass"/>-->
+    <exclude name="AvoidUncheckedExceptionsInSignatures"/>
   </rule>
   <rule ref="category/java/design.xml/ExcessiveParameterList">
     <properties>
@@ -124,6 +125,8 @@
 
   <rule ref="category/java/security.xml">
   </rule>
+
+
 
   <!--  <rule ref="category/java/bestpractices.xml/ConstantsInInterface">-->
   <!--    <properties>-->

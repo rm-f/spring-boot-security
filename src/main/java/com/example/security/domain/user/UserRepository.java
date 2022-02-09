@@ -1,15 +1,18 @@
 package com.example.security.domain.user;
 
-import com.example.security.domain.user.entity.User;
+import com.example.security.domain.user.entity.ServiceUser;
+import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<ServiceUser, Long> {
 
-  List<User> findByName(final String name);
+  List<ServiceUser> findByUserName(final String userName);
 
-  User findById(final String id);
+  Optional<ServiceUser> findByUserId(final String userId);
 
-  User findByNo(final Long no);
+  Optional<ServiceUser> findByUserNo(final Long userNo);
+
+  Optional<ServiceUser> findByUserIdAndPassword(final String userId, final String password);
 
 }

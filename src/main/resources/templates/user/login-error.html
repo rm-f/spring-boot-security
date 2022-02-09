@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <title>Index</title>
+</head>
+<body>
+<h1>login-error</h1>
+<th:block sec:authorize="!isAuthenticated()">
+  <h2>guest</h2>
+</th:block>
+<th:block sec:authorize="isAuthenticated()">
+  <h2 sec:authentication="principal.username">login serviceUser</h2>
+</th:block>
+
+</body>
+</html>
