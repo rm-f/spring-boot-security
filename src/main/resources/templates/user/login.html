@@ -16,6 +16,7 @@
   <div>
     <input type="password" name="password" placeholder="password"/>
   </div>
+  <input type="hidden" name="returnUrl" th:value="${returnUrl}">
   <input type="submit" value="Log in" />
 </form>
 <h2 th:text="${error}">${error}</h2>

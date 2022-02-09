@@ -7,6 +7,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Slf4j
 @SpringBootTest
@@ -36,5 +38,11 @@ class ServiceUserRepositoryTest {
             .toString());
 
     Assertions.assertThat(serviceUser != null);
+  }
+
+  @Test
+  void encrypt(){
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    log.debug("{}", encoder.encode("test1234"));
   }
 }

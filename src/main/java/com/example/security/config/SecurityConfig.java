@@ -1,5 +1,7 @@
 package com.example.security.config;
 
+import com.example.security.security.CustomLoginFailureHandler;
+import com.example.security.security.CustomLoginSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -35,6 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .formLogin(
             (formLogin) ->
                 formLogin
+                    .successHandler(authenticationSuccessHandler())
+                    .failureHandler(authenticationFailureHandler())
                     .loginPage("/user/login")
                     .failureUrl("/user/login-error")
                     .loginProcessingUrl("/user/login-process")
@@ -42,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .passwordParameter("password"));
     http.csrf().disable();
     http.headers().frameOptions().disable();
+    http.logout().logoutUrl("/user/logout").logoutSuccessUrl("/").permitAll();
   }
 
   @Bean
@@ -71,5 +78,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
+  }
+
+  @Bean
+  public AuthenticationSuccessHandler authenticationSuccessHandler() {
+    return new CustomLoginSuccessHandler();
+  }
+
+  @Bean
+  public AuthenticationFailureHandler authenticationFailureHandler() {
+    return new CustomLoginFailureHandler();
   }
 }

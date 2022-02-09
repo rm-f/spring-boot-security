@@ -7,6 +7,8 @@
 </head>
 <body>
 <h1>index</h1>
+<div><a href="/user/login">login</a></div>
+<div><a href="/user/logout">logout</a></div>
 <th:block sec:authorize="!isAuthenticated()">
   <h2>guest</h2>
 </th:block>
