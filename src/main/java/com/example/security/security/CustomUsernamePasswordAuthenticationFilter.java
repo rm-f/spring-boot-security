@@ -17,7 +17,7 @@ public class CustomUsernamePasswordAuthenticationFilter
 
   public CustomUsernamePasswordAuthenticationFilter(AuthenticationManager authenticationManager) {
     this.authenticationManager = authenticationManager;
-    //    setFilterProcessesUrl("/user/login");
+    setFilterProcessesUrl("/user/login-process");
   }
 
   @Override
@@ -25,12 +25,14 @@ public class CustomUsernamePasswordAuthenticationFilter
       HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
     log.debug("attemptAuthentication");
 
-    if (!request.getMethod().equals("POST")) {
+    if (!"POST".equals(request.getMethod())) {
       throw new AuthenticationServiceException("Method method support : " + request.getMethod());
     }
 
-    String username = obtainUsername(request);
-    String password = obtainPassword(request);
+    //    String username = obtainUsername(request);
+    //    String password = obtainPassword(request);
+    String username = request.getParameter("userid");
+    String password = request.getParameter("password");
     String secretNumber = request.getParameter("secret_number");
     CustomUsernamePasswordAuthenticationToken token =
         new CustomUsernamePasswordAuthenticationToken(username, password, secretNumber);
