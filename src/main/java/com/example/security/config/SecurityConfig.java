@@ -18,14 +18,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  //    final LoginUserDetailsServiceImpl loginUserDetailsService;
   final CustomAuthenticationProvider provider;
   final AuthenticationSuccessHandler authenticationSuccessHandler;
   final AuthenticationFailureHandler authenticationFailureHandler;
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    //    auth.userDetailsService(loginUserDetailsService).passwordEncoder(passwordEncoder());
     auth.authenticationProvider(provider);
   }
 
@@ -58,30 +56,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         new CustomUsernamePasswordAuthenticationFilter(authenticationManager()),
         UsernamePasswordAuthenticationFilter.class);
   }
-
-  //  @Bean
-  //  @Override
-  //  public UserDetailsService userDetailsService() {
-  //    UserDetails userDetails =
-  //        User.withUsername("test")
-  //            .password(passwordEncoder().encode("test1234"))
-  //            .roles("USER")
-  //            .build();
-  //    return new InMemoryUserDetailsManager(userDetails);
-  //  }
-
-  //  @Bean
-  //  public DaoAuthenticationProvider authenticationProvider() {
-  //    DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-  //    authenticationProvider.setUserDetailsService(userDetailsService());
-  //    authenticationProvider.setPasswordEncoder(passwordEncoder());
-  //    return authenticationProvider;
-  //  }
-  //
-
-  //  @Bean
-  //  public UserDetailsService userDetailsService() {
-  //    return loginUserDetailsService;
-  //  }
 
 }

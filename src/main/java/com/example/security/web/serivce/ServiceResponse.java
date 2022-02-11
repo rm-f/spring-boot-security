@@ -2,6 +2,7 @@ package com.example.security.web.serivce;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,8 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public final class ServiceResponse<T> {
 
-  private int code;
-  private String message;
+  @Default
+  private int code = 200;
+  @Default
+  private String message = "success";
   private T data;
 
   @Override
