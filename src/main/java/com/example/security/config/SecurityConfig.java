@@ -1,12 +1,9 @@
 package com.example.security.config;
 
 import com.example.security.security.CustomAuthenticationProvider;
-import com.example.security.security.CustomLoginFailureHandler;
-import com.example.security.security.CustomLoginSuccessHandler;
 import com.example.security.security.CustomUsernamePasswordAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -1,18 +1,17 @@
 package com.example.security.security;
 
+import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.Enumeration;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
@@ -38,7 +37,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
     log.debug("savedRequest : {}", savedRequest);
     Enumeration<String> enumeration = request.getParameterNames();
 
-    while (enumeration.hasMoreElements()){
+    while (enumeration.hasMoreElements()) {
       log.debug("parameterName : {} ", enumeration.nextElement());
     }
 
@@ -48,7 +47,9 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
     String savedRedirectUrl = (savedRequest == null) ? "/" : savedRequest.getRedirectUrl();
     log.debug("redirectUrl : {}", redirectUrl);
     response.sendRedirect(
-        (redirectUrl != null && !"".equals(redirectUrl)) ? URLDecoder.decode(redirectUrl, "utf-8") : savedRedirectUrl);
+        redirectUrl != null && !"".equals(redirectUrl)
+            ? URLDecoder.decode(redirectUrl, "utf-8")
+            : savedRedirectUrl);
   }
 
   private void clearAuthenticationAttribute(HttpServletRequest request) {

@@ -24,7 +24,7 @@ public class LoginUserDetailsServiceImpl implements UserDetailsService {
     }
     LoginUser loginUser = new LoginUser(serviceUser.get());
     log.debug("serviceUser : {}", serviceUser);
-    log.debug("loginUser : {}", loginUser.toString());
+    log.debug("loginUser : {}", loginUser);
     return loginUser;
   }
 }

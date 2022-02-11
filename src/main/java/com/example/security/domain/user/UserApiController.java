@@ -18,4 +18,5 @@ public class UserApiController {
   public ServiceUser serviceUserByNo(@PathVariable("no") Long no) {
     return userService.getServiceUser(no);
   }
+
 }

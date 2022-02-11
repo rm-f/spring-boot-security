@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 public final class CustomUsernamePasswordAuthenticationToken
     extends UsernamePasswordAuthenticationToken {
 
+  private static final long serialVersionUID = -343503744765173849L;
   private final String secretNumber;
 
   public CustomUsernamePasswordAuthenticationToken(

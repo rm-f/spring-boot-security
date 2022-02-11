@@ -1,5 +1,7 @@
 package com.example.security.security;
 
+import static com.example.security.constants.Constants.POST;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +18,7 @@ public class CustomUsernamePasswordAuthenticationFilter
   private final AuthenticationManager authenticationManager;
 
   public CustomUsernamePasswordAuthenticationFilter(AuthenticationManager authenticationManager) {
+    super();
     this.authenticationManager = authenticationManager;
     setFilterProcessesUrl("/user/login-process");
   }
@@ -25,7 +28,7 @@ public class CustomUsernamePasswordAuthenticationFilter
       HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
     log.debug("attemptAuthentication");
 
-    if (!"POST".equals(request.getMethod())) {
+    if (!POST.equals(request.getMethod())) {
       throw new AuthenticationServiceException("Method method support : " + request.getMethod());
     }
 

@@ -19,11 +19,26 @@ class ServiceUserRepositoryTest {
   void saveAndFindById() {
     ServiceUser serviceUser =
         userRepository.save(
-            ServiceUser.builder().userId("test").password("test").userName("개발자").build());
+            ServiceUser.builder()
+                .userId("test10")
+                .password("test")
+                .email("test@test.com")
+                .userName("개발자10")
+                .build());
     userRepository.save(
-        ServiceUser.builder().userId("test1").password("test1").userName("개발자1").build());
+        ServiceUser.builder()
+            .userId("test1")
+            .password("test1")
+            .email("test@test.com")
+            .userName("개발자1")
+            .build());
     userRepository.save(
-        ServiceUser.builder().userId("test2").password("test2").userName("개발자2").build());
+        ServiceUser.builder()
+            .userId("test2")
+            .password("test2")
+            .email("test@test.com")
+            .userName("개발자2")
+            .build());
     log.info("save : {}", serviceUser.toString());
     Optional<ServiceUser> userResult = userRepository.findByUserId(serviceUser.getUserId());
     log.info("findById : {} ", userResult.get());
@@ -44,11 +59,12 @@ class ServiceUserRepositoryTest {
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     log.debug("encode : {}", encoder.encode(rawPassword));
     Optional<ServiceUser> serviceUser = userRepository.findByUserId("test");
-    if(serviceUser.isPresent()){
+    if (serviceUser.isPresent()) {
       log.debug("db passwd: {}", serviceUser.get().getPassword());
       log.debug("match : {}", encoder.matches(rawPassword, encoder.encode(rawPassword)));
       log.debug("db match : {}", encoder.matches(rawPassword, serviceUser.get().getPassword()));
     }
     log.debug("encode : {}", encoder.encode(rawPassword));
+    Assertions.assertThat(encoder.matches(rawPassword, serviceUser.get().getPassword()));
   }
 }
