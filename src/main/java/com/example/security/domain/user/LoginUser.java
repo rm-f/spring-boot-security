@@ -3,55 +3,33 @@ package com.example.security.domain.user;
 import com.example.security.domain.user.entity.ServiceUser;
 import java.util.Arrays;
 import java.util.Collection;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.User;
 
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class LoginUser implements UserDetails {
+@Slf4j
+@ToString
+@Getter
+@Setter
+public class LoginUser extends User {
 
   private static final long serialVersionUID = 5981165430449248911L;
 
   private ServiceUser serviceUser;
 
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    SimpleGrantedAuthority authority = new SimpleGrantedAuthority(serviceUser.getUserRole());
-    return Arrays.asList(authority);
+  public LoginUser(
+      String userId, String password, Collection<? extends GrantedAuthority> authorities) {
+    super(userId, password, authorities);
   }
 
-  @Override
-  public String getPassword() {
-    return serviceUser.getPassword();
-  }
-
-  @Override
-  public String getUsername() {
-    return serviceUser.getUserId();
-  }
-
-  @Override
-  public boolean isAccountNonExpired() {
-    return true;
-  }
-
-  @Override
-  public boolean isAccountNonLocked() {
-    return true;
-  }
-
-  @Override
-  public boolean isCredentialsNonExpired() {
-    return false;
-  }
-
-  @Override
-  public boolean isEnabled() {
-    return serviceUser.isEnabled();
+  public LoginUser(ServiceUser serviceUser) {
+    super(
+        serviceUser.getUserId(),
+        serviceUser.getPassword(),
+        Arrays.asList(new SimpleGrantedAuthority(serviceUser.getUserRole())));
   }
 }

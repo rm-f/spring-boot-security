@@ -23,6 +23,8 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
     RequestCache requestCache = new HttpSessionRequestCache();
     SavedRequest savedRequest = requestCache.getRequest(request, response);
 
+    log.debug("savedRequest : {}", savedRequest);
+
     String failReturnUrl = request.getParameter("failReturnUrl");
 
     response.sendRedirect(failReturnUrl == null ? "/" : URLDecoder.decode(failReturnUrl, "utf-8"));

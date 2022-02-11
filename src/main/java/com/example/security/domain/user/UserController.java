@@ -20,7 +20,7 @@ class UserController {
       model.addAttribute("error", "Login error!");
     }
 
-    if(logout != null){
+    if (logout != null) {
       model.addAttribute("logout", "Logout!!");
     }
 
@@ -30,12 +30,12 @@ class UserController {
   }
 
   @GetMapping("/login-error")
-  public String loginError(String error, String logout, Model model){
+  public String loginError(String error, String logout, Model model) {
     if (error != null) {
       model.addAttribute("error", "Login error!");
     }
 
-    if(logout != null){
+    if (logout != null) {
       model.addAttribute("logout", "Logout!!");
     }
     return "user/login-error";
