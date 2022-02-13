@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .passwordParameter("password"));
     http.csrf().disable();
     http.headers().frameOptions().disable();
+    http.rememberMe().key("2ror220201012").tokenValiditySeconds(60 * 60 * 24);
     http.logout().logoutUrl("/user/logout").logoutSuccessUrl("/").permitAll();
 
     http.addFilterAt(

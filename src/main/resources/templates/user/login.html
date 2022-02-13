@@ -6,9 +6,11 @@
 <body>
 <h1>Please Log In</h1>
 <div th:if="${param.error}">
-  Invalid username and password.</div>
+  Invalid username and password.
+</div>
 <div th:if="${param.logout}">
-  You have been logged out.</div>
+  You have been logged out.
+</div>
 <form th:action="@{/user/login-process}" method="post">
   <div>
     <input type="text" name="userid" placeholder="id"/>
@@ -17,7 +19,10 @@
     <input type="password" name="password" placeholder="password"/>
   </div>
   <input type="hidden" name="returnUrl" th:value="${returnUrl}">
-  <input type="submit" value="Log in" />
+  <input type="submit" value="Log in"/>
+  <div>
+    <input type="checkbox" name="remember-me">로그인 상태 유지
+  </div>
 </form>
 <h2 th:text="${error}">${error}</h2>
 <h2 th:text="${logout}">${error}</h2>

@@ -5,6 +5,7 @@ import com.example.security.domain.user.form.RegistForm;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,5 +27,10 @@ public class UserApiController {
   @PostMapping("/regist")
   public ResponseEntity<ServiceUser> regist(@Valid RegistForm registForm) {
     return ResponseEntity.ok(userService.regist(registForm));
+  }
+
+  @GetMapping("/me")
+  public ResponseEntity<LoginUser> me(@AuthenticationPrincipal LoginUser loginUser) {
+    return ResponseEntity.ok(loginUser);
   }
 }
