@@ -1,5 +1,6 @@
 package com.example.security.domain.user.entity;
 
+import com.sun.istack.NotNull;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,6 +38,7 @@ public class ServiceUser {
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERS_NO_GENERATOR")
   private Long userNo;
 
+  @NotNull
   @Column(nullable = false, unique = true)
   private String userId;
 
