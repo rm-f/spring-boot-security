@@ -55,19 +55,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     return new InMemoryUserDetailsManager(userDetails);
   }
 
-  //  @Bean
-  //  public DaoAuthenticationProvider authenticationProvider() {
-  //    DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-  //    authenticationProvider.setUserDetailsService(userDetailsService());
-  //    authenticationProvider.setPasswordEncoder(passwordEncoder());
-  //    return authenticationProvider;
-  //  }
-  //
-  //  @Bean
-  //  public UserDetailsService userDetailsService() {
-  //    return loginUserDetailsService;
-  //  }
-  //
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
